@@ -1,8 +1,34 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Image from 'next/image';
-import Link from 'next/link'
+import Link from 'next/link';
+import signUp from '../hooks/signup';
+import {useRouter} from 'next/router';
 
 function Signup() {
+  const [organizationName, setOrganizationName] = useState('');
+  const [organizationEmail, setOrganizationEmail] = useState('');
+  const {loading, error, sendRequest} = signUp();
+  const router = useRouter();
+
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) =>{
+    e.preventDefault();
+
+    const signUpData = {
+      organizationName,
+      organizationEmail,
+    };
+
+    const response = await sendRequest('https://nezabackend-2a2e9782ab7f.herokuapp.com/api/users/', 'POST', signUpData);
+
+    if (error){
+      console.error('Signup failed:', error);
+    }
+    else if(response){
+      router.push('/Login')
+
+    }
+  };
+
   return (
     <div className="max-w-full mt- ml-10 bg-white pl-[280px] pt-20">
       <Image
