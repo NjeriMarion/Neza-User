@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
-// import SideBar from '../components/Sidebar';
+import SideBar from '../components/Sidebar';
 
 //use client
 const Profile = () => {
@@ -104,6 +104,8 @@ const Profile = () => {
   }
 
   return (
+    <div className='flex'>
+      <SideBar/>
     <div className="flex bg-white ml-[20%]">
       <div className="m-auto">
         <h1 className="text-2xl font-semibold mt-4 pl-10 text-black text-center">My Account</h1>
@@ -129,6 +131,7 @@ const Profile = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 };

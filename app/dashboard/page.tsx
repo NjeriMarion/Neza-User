@@ -2,10 +2,12 @@
 import React from 'react';
 import NairobiMap from '../atoms/map';
 import { FaSearch } from 'react-icons/fa';
+import SideBar from '../components/Sidebar';
 
 function Dashboard() {
   return (
     <div className='flex'>
+      <SideBar/>
     <div className='flex'>
     <div className='flex ml-[40px] mt-[30px]'>
       <div className='pl-20 pt-10 '>

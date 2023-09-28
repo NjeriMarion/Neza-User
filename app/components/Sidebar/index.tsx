@@ -17,7 +17,7 @@ type MenuItem = {
 
 const SideBar = () => {
   const menuItems: MenuItem[] = [
-    { id: 1, label: "Dashboard", link: "/", icon: <RxDashboard /> },
+    { id: 1, label: "Dashboard", link: "/dashboard", icon: <RxDashboard /> },
     { id: 2, label: "Data Management", link: "/datamanagement", icon: <RxPieChart /> },
     { id: 3, label: "Profile", link: '/profile', icon: <RxPerson /> },
   ];

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 type LogoutModalProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -18,12 +19,14 @@ const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onLogout, ac
           >
             Cancel
           </button>
+          <Link href="/Login">
           <button
             className={`bg-green-500 bg-opacity-20 text-white px-3 py-3 rounded-md w-28 border-2 border-green-500 font-nunito ${activeLink === "/logOut" ? "text-yellow-500" : ""}`}
             onClick={onLogout}
           >
             Sign Out
           </button>
+          </Link>
         </div>
       </div>
     </div>

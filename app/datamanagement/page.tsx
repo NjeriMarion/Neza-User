@@ -6,6 +6,7 @@ import UpdateFileModal from '../modals/UpdateFileModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import SideBar from '../components/Sidebar';
 
 const DataUpload: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File>();
@@ -148,7 +149,7 @@ const DataUpload: React.FC = () => {
 
   return (
     <div className="flex flex-col md:flex-row data-upload-container">
-      {/* <SideBar /> */}
+      <SideBar />
       <div className="md-5  pl-[119px] upload-files md:w-1/2">
         <h1 className="font-nunito font-semibold text-3xl sm:text-3xl md:text-4xl mt-[65px]">Data Management</h1>
 

@@ -60,7 +60,7 @@ function SignIn() {
       </div>
       <div className="mb-10 mt-10">
         <label htmlFor="organizationEmail" className="block text-gray-700 mb-2 ml-10 font-nunito ">
-          Organization Email:
+          Enter Password:
         </label>
         <input
           type="email"
@@ -73,18 +73,21 @@ function SignIn() {
 
             <div className='pl-40'>
             <Link href={defaultPageLink}>
-              <button
-                type="submit"
-                className="w-[270px] h-[70px] mt-5 px-1 py-4 bg-green-600 border border-green-600 text-white rounded-[10px] hover:bg-green-600 hover:text-white focus:outline-none focus:bg-green-600">
-                Sign In
-              </button>
+               <button
+            className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-md mt-2 pr-5 font-nunito"
+            style={{
+              width: '200px',
+              height: '70px',
+              borderRadius: '10px',
+              background: '#2DCD1F',
+            }}
+          >
+            Sign In
+          </button>
               </Link>
               <Link href="/signup">
       <p className='mt-10 text-black text-xl font-normal font-["Nunito"]'>Don't have an account? <span className='text-green-400'>Sign Up</span></p>
       </Link> 
-              {/* <Link href={defaultPageLink}>
-                <div>Continue to Default Page</div>
-              </Link> */}
             </div>
           </form>
         </div>
