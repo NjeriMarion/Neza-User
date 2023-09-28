@@ -2,14 +2,15 @@
 import Image from 'next/image'
 import SideBar from './components/Sidebar'
 import Dashboard from './dashboard/page'
-import SignIn from './Login/login'
+import SignIn from './Login/page'
+import Signup from './signup'
 
 export default function Home() {
   return (
     <main>
 
     <div>
-      <SignIn/>
+      <Signup/>
         {/* <Dashboard/> */}
     </div>
     </main>

@@ -46,20 +46,45 @@ function SignIn() {
         <div>
           <div className="text-black text-[43px] ml-20 pl-[150px] font-['Nunito']">Sign In </div>
           <form className='mt-10 ml-2 w-max text-[20px] font-["Nunito"]' onSubmit={handleSubmit}>
-            {/* ... (your form inputs and submit button) */}
+          <div className="mb-4">
+        <label htmlFor="organizationName" className="block text-gray-700 mb-2 ml-10 font-nunito">
+          Organization Name:
+        </label>
+        <input
+          type="text"
+          id="organizationName"
+          name="organizationName"
+          className= "w-[583px] h-[87px] rounded-[10px] border-2 border-green-400 border-opacity-30"
+          required
+        />
+      </div>
+      <div className="mb-10 mt-10">
+        <label htmlFor="organizationEmail" className="block text-gray-700 mb-2 ml-10 font-nunito ">
+          Organization Email:
+        </label>
+        <input
+          type="email"
+          id="organizationEmail"
+          name="organizationEmail"
+          className= "w-[583px] h-[87px] rounded-[10px] border-2 border-green-400 border-opacity-30"
+          required
+        />
+       </div>
 
-            {/* Add the "Continue to Default Page" link */}
             <div className='pl-40'>
+            <Link href={defaultPageLink}>
               <button
                 type="submit"
                 className="w-[270px] h-[70px] mt-5 px-1 py-4 bg-green-600 border border-green-600 text-white rounded-[10px] hover:bg-green-600 hover:text-white focus:outline-none focus:bg-green-600">
                 Sign In
               </button>
-              <p className='mt-10 text-black text-xl'>Don't have an account? <span className='text-green-600'>Sign Up</span></p>
-              {/* Link to the default page */}
-              <Link href={defaultPageLink}>
-                <a>Continue to Default Page</a>
               </Link>
+              <Link href="/signup">
+      <p className='mt-10 text-black text-xl font-normal font-["Nunito"]'>Don't have an account? <span className='text-green-400'>Sign Up</span></p>
+      </Link> 
+              {/* <Link href={defaultPageLink}>
+                <div>Continue to Default Page</div>
+              </Link> */}
             </div>
           </form>
         </div>
