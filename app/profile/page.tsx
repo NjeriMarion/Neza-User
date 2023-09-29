@@ -46,7 +46,7 @@ const Profile = () => {
 
   const EditIconButton = ({isEditMode}:{isEditMode:boolean}) =>{
     return (
-    <div className="absolute right-4 top-2">
+    <div className="absolute right-4 top-2">/LOGO.png
 
 
     <EditIcon

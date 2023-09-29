@@ -103,7 +103,7 @@ const SideBar = () => {
         <div className="flex items-center justify-between relative">
           <div className="flex items-center pl-1 gap-4 flex-col">
             <img
-              src="/images/LOGO.png"
+              src="/LOGO.png"
               alt="Logo"
               width={toggleCollapse ? 45 : 90}
               height={toggleCollapse ? 28 : 56}
