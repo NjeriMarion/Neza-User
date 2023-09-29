@@ -6,7 +6,9 @@ interface UsersData {
     website: string;
     phone_number:string;
   }
-  export const signup = async (userData: UsersData) => {
+
+
+export const signup = async (userData: UsersData) => {
     const url ='https://tinylife.pythonanywhere.com/api/users/';
     try {
       const response = await fetch(url, {
@@ -24,12 +26,15 @@ interface UsersData {
   };
 
 
+
+
 interface LoginData {
     username: string;
     password: string;
-  }
-  export const loginUser = async (loginData: LoginData) => {
-    const url = 'https://nezabackend-2a2e9782ab7f.herokuapp.com/api/login';
+}
+  
+export const loginUser = async (loginData: LoginData) => {
+    const url = 'https://tinylife.pythonanywhere.com/api/login/';
     try {
       const response = await fetch(url, {
         method: 'POST',

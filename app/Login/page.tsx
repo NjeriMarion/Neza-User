@@ -1,6 +1,5 @@
 'use client'
-
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useLogin from '../hooks/useLogin';
@@ -9,23 +8,26 @@ import useLogin from '../hooks/useLogin';
 const defaultPageLink = "/dashboard";
 
 function Login() {
-  const { username, setUsername, password, setPassword, login } = useLogin();
+  const [username, setusername] = useState('');
+  const [password, setPassword] = useState('');
+  const { user, handleLogin } = useLogin({
+    username:username,
+    password:password,
+  });
 
-  const handleSubmit = async () => {
-    if (!username || !password) {
-      console.error('Incorrect credentials');
-      return;
-    }
-    try {
-      await login();
-      window.location.href = defaultPageLink;
-      console.log('Logged In')
+  const handleLoginUser = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
 
-    } catch (err) {
-      console.error('Login failed:', err);
+    await handleLogin();
+
+    if (user) {
+      console.log('User Logged In:', user);
+
+    } else {
+      console.error('Error Logging In');
     }
   };
-
+console.log(user);
 
   return (
     <div className="max-w-full w-auto h-auto mt- ml-10 bg-white pl-[280px] pt-20">
@@ -39,17 +41,17 @@ function Login() {
       <div className='flex gap-x-20 '>
         <div>
           <div className="text-black text-[43px] ml-20 pl-[150px] font-['Nunito']">Sign In </div>
-          <form className='mt-10 ml-2 w-max text-[20px] font-["Nunito"]' onSubmit={handleSubmit}>
+          <form className='mt-10 ml-2 w-max text-[20px] font-["Nunito"]' onSubmit={handleLoginUser}>
             <div className="mb-4">
-              <label htmlFor="organizationEmail" className="block text-gray-700 mb-2 ml-10 font-nunito">
-                Organization Email:
+              <label htmlFor="username" className="block text-gray-700 mb-2 ml-10 font-nunito">
+                Username:
               </label>
               <input
                 type="text"
-                id="organizationEmail"
-                name="organizationEmail"
+                id="username"
+                name="username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setusername(e.target.value)}
                 className="w-[583px] h-[87px] rounded-[10px] border-2 border-green-400 border-opacity-30"
                 required
               />

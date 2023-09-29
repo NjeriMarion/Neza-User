@@ -9,7 +9,7 @@ export async function POST(request: Request) {
       });
     }
     const posts = await request.json().then(async (response) => {
-      const result = await fetch(`https://nezabackend-2a2e9782ab7f.herokuapp.com/api/login/`, {
+      const result = await fetch(`https://tinylife.pythonanywhere.com/api/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     });
 
     return new Response(JSON.stringify(posts), {
-      status: 201,
+      status: 200,
       statusText: "Success",
     });
   } catch (error: any) {

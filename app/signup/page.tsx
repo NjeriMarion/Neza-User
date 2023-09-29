@@ -27,6 +27,8 @@ function Signup() {
 
     if (user) {
       console.log('User created:', user);
+      const logIn = <Link href='\Login'/>
+
     } else {
       console.error('Error creating user');
     }
@@ -130,8 +132,9 @@ console.log(user);
         />
       </div>
       <div className='pl-40'>
-      <Link href="/Login" >
+      <Link href="">
       <button
+            type='submit'
             className="ml-5 bg-green-500 text-white px-4 py-3 mt-5 rounded-md pr-5 font-nunito"
             style={{
               width: '200px',
@@ -139,6 +142,7 @@ console.log(user);
               borderRadius: '10px',
               background: '#2DCD1F',
             }}
+            onClick={handleCreateUser} 
           > 
             Sign Up
           </button>
