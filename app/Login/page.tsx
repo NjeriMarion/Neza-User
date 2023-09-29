@@ -17,7 +17,7 @@ function SignIn() {
     login,
   } = useLogin();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     try {
