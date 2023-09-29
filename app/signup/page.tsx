@@ -3,7 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import signUp from '../hooks/signup';
+import signUp from '../hooks/useSignup';
 
 function Signup() {
   const [organizationName, setOrganizationName] = useState('');
