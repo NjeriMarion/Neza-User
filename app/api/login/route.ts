@@ -1,4 +1,6 @@
 import { BASE_URL } from "@/config";
+import { ACCESS_TOKEN } from "@/config";
+
 
 export async function POST(request: Request) {
   try {
@@ -8,21 +10,22 @@ export async function POST(request: Request) {
         statusText: "Failed",
       });
     }
-    const posts = await request.json().then(async (response) => {
-      const result = await fetch(`https://nezabackend-2a2e9782ab7f.herokuapp.com/api/login/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(response),
-      });
-
-      const post = await result.json();
-
-      return post;
+    
+    const response = await fetch(`${BASE_URL}/api/user/details/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request.json()),
     });
 
-    return new Response(JSON.stringify(posts), {
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    const post = await response.json();
+
+    return new Response(JSON.stringify(post), {
       status: 201,
       statusText: "Success",
     });
