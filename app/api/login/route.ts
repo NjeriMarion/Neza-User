@@ -1,4 +1,6 @@
 import { BASE_URL } from "@/config";
+import { ACCESS_TOKEN } from "@/config";
+
 
 export async function POST(request: Request) {
   try {

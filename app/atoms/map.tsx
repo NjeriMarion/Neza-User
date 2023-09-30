@@ -1,26 +1,40 @@
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L, { icon } from 'leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { RxColorWheel } from 'react-icons/rx';
+import { loadModel } from '../utilities/loadmodel';
 
-
-export default function NairobiMap() {
+export default function NairobiMapWithPredictions() {
+  const [predictions, setPredictions] = useState([]);
   const [popupOpen, setPopupOpen] = useState(false);
   const mapCenter = [-1.286389, 36.817223];
   const nairobiBounds = [
     [-1.4642, 36.6544],
     [-1.1595, 37.0811],
   ];
+  useEffect(() => {
+    loadModel()
+      .then((model) => {
+        const inputData =""
+        const prediction = model.predict(inputData);
+
+        setPredictions(prediction);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
+
   const leadPoisoningLocations = [
-    { lat: -1.2801, lng: 36.8219, name: 'Location 1', percentage: 80},
+    { lat: -1.2801, lng: 36.8219, name: 'Location 1', percentage: 80 },
     { lat: -1.2921, lng: 36.8212, name: 'Location 2', percentage: 60 },
     { lat: -1.2701, lng: 36.8719, name: 'Location 3', percentage: 20 },
     { lat: -1.3021, lng: 36.8214, name: 'Location 4', percentage: 50 },
     { lat: -1.2801, lng: 36.7219, name: 'Location 5', percentage: 70 },
     { lat: -1.2921, lng: 36.8112, name: 'Location 6', percentage: 10 },
   ];
+
   const greenIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -29,9 +43,11 @@ export default function NairobiMap() {
     popupAnchor: [1, -34],
     shadowSize: [41, 41],
   });
+
   const togglePopup = () => {
     setPopupOpen(!popupOpen);
   };
+
   return (
     <div style={{ height: '500px', width: '100%', marginTop: '3%' }}>
       <MapContainer
@@ -59,6 +75,9 @@ export default function NairobiMap() {
             </Popup>
           </Marker>
         ))}
+        <Marker position={mapCenter}> // Add a marker for the prediction
+          <Popup>Prediction: {predictions}</Popup>
+        </Marker>
       </MapContainer>
     </div>
   );

@@ -82,6 +82,7 @@ return (
                 {message}
               </p>
             )}
+            <Link href="/dashboard">
             <button
               type='submit'
               className="ml-10 bg-green-500 text-white px-4 py-3 mt-20 rounded-md mt-2 pr-5 font-nunito"
@@ -94,6 +95,7 @@ return (
             >          
               Sign In
             </button>
+            </Link>
 
             <Link href="/signup">
               <p className='mt-10 text-black text-xl font-normal font-["Nunito"]'>Don't have an account? <span className='text-green-400'>Sign Up</span></p>
